@@ -1,0 +1,12 @@
+.nutritional-values-container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 39px;
+}
+.nutritional-values-container .nutritional-value {
+  flex: 1;
+  background-color: aqua;
+}
+
+/*# sourceMappingURL=nutritional-value.css.map */

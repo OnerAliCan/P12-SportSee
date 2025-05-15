@@ -1,3 +1,48 @@
+html,
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  height: 100%;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+#root {
+  height: 100%;
+}
+
+.app {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.app .horizontal-navbar-user-infos-container {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+.app .horizontal-navbar-user-infos-container .user-infos {
+  margin-left: 107px;
+  margin-top: 68px;
+  margin-right: 90px;
+  width: 100%;
+}
+.app .horizontal-navbar-user-infos-container .user-infos .user-stats {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  width: 100%;
+}
+.app .horizontal-navbar-user-infos-container .user-infos .user-stats .curves {
+  display: flex;
+  gap: 30px;
+  flex-direction: column;
+  flex: 3;
+}
+.app .horizontal-navbar-user-infos-container .user-infos .user-stats .curves .small-curves {
+  display: flex;
+  gap: 30px;
+  flex-direction: row;
+}
 
 /*# sourceMappingURL=main.css.map */

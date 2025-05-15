@@ -1,34 +1,41 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react'
+import UserName from './components/UserName'
+import HorizontalNavbar from './components/HorizontalNavbar'
+import VerticalNavbar from './components/VerticalNavbar'
+import DailyActivity from './components/DailyActivity'
+import AverageDuration from './components/AverageDuration'
+import Stats from './components/Stats'
+import Score from './components/Score'
+import NutritionalValue from './components/NutritionalValue'
+import './styles/main.scss'
+import { BarChart } from 'recharts'
+
+console.log(BarChart)
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="app">
+      <HorizontalNavbar />
+      <div className="horizontal-navbar-user-infos-container">
+        <VerticalNavbar />
+        <div className="user-infos">
+          <UserName />
+          <div className="user-stats">
+            <div className="curves">
+              <DailyActivity userId={12} />
+              <div className="small-curves">
+                <AverageDuration />
+                <Stats />
+                <Score />
+              </div>
+            </div>
+            <div className="nutritional-values-container">
+              <NutritionalValue />
+            </div>
+          </div>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </div>
   )
 }
 

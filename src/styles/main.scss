@@ -1,0 +1,46 @@
+html,
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  height: 100%;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#root {
+  height: 100%;
+}
+
+.app {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  .horizontal-navbar-user-infos-container {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    .user-infos {
+      margin-left: 107px;
+      margin-top: 68px;
+      margin-right: 90px;
+      width: 100%;
+      .user-stats {
+        display: flex;
+        flex-direction: row;
+        gap: 30px;
+        width: 100%;
+        .curves {
+          display: flex;
+          gap: 30px;
+          flex-direction: column;
+          flex: 3;
+          .small-curves {
+            display: flex;
+            gap: 30px;
+            flex-direction: row;
+          }
+        }
+      }
+    }
+  }
+}

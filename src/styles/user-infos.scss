@@ -1,0 +1,17 @@
+.user-greeting {
+  font-size: 48px;
+  margin-bottom: 77px;
+  h1 {
+    font-weight: 500;
+    margin-bottom: 41px;
+    margin-top: 0;
+    .user-first-name {
+      color: red;
+    }
+  }
+  .congratulations {
+    font-size: 18px;
+    font-weight: 400;
+    margin: 0;
+  }
+}
