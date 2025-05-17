@@ -10,8 +10,6 @@ import NutritionalValue from './components/NutritionalValue'
 import './styles/main.scss'
 import { BarChart } from 'recharts'
 
-console.log(BarChart)
-
 function App() {
   return (
     <div className="app">
@@ -24,7 +22,7 @@ function App() {
             <div className="curves">
               <DailyActivity userId={12} />
               <div className="small-curves">
-                <AverageDuration />
+                <AverageDuration userId={12} />
                 <Stats />
                 <Score />
               </div>
