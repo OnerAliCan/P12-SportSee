@@ -9,7 +9,6 @@ import {
   ResponsiveContainer,
   Legend,
 } from 'recharts'
-import { useEffect, useState } from 'react'
 
 export default function DailyActivity({ activityData }) {
   const dailyActivity = [...activityData]
@@ -21,8 +20,37 @@ export default function DailyActivity({ activityData }) {
 
   const kilos = dailyActivity.map((d) => d.kilogram)
   const minKilo = Math.min(...kilos) - 5
-  const maxKilo = Math.max(...kilos) + 1
 
+  const renderTooltip = ({ active, payload }) => {
+    if (active && payload && payload.length) {
+      return (
+        <div
+          style={{
+            background: '#E60000',
+            color: '#FFFFFF',
+            padding: '0.25em 0.5em',
+            textAlign: 'center',
+            fontSize: '0.8rem',
+            fontWeight: '500',
+            borderRadius: '5px',
+          }}
+        >
+          {payload.map((entry, index) => {
+            let unit = ''
+            if (entry.dataKey === 'kilogram') unit = 'kg'
+            else if (entry.dataKey === 'calories') unit = 'kCal'
+
+            return (
+              <p key={index} style={{ margin: '0.25em 0' }}>
+                {`${entry.value} ${unit}`}
+              </p>
+            )
+          })}
+        </div>
+      )
+    }
+    return null
+  }
   return (
     <div className="daily-activity">
       <ResponsiveContainer width="100%" height={300}>
@@ -33,10 +61,10 @@ export default function DailyActivity({ activityData }) {
         >
           <text
             x={30}
-            y={25}
+            y={35}
             textAnchor="left"
             style={{
-              fontSize: '0.9rem',
+              fontSize: '1rem',
               fontWeight: 500,
               fill: '#000000',
             }}
@@ -57,7 +85,7 @@ export default function DailyActivity({ activityData }) {
             dataKey="kilogram"
           />
           <YAxis yAxisId="right" orientation="left" dataKey="calories" hide />
-          <Tooltip />
+          <Tooltip content={renderTooltip} />
           <Legend
             layout="horizontal"
             verticalAlign="top"

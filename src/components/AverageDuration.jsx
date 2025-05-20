@@ -32,19 +32,7 @@ export default function AverageDuration({ averageSessionsData }) {
               <stop offset="100%" stopColor="#FFFFFF" stopOpacity="100%" />
             </linearGradient>
           </defs>
-          {/* <text
-            x={35}
-            y={30}
-            textAnchor="left"
-            style={{
-              fontSize: '1rem',
-              fontWeight: 500,
-              fill: '#FFFFFF',
-              fillOpacity: '60%',
-            }}
-          >
-            Durée moyenne des sessions
-          </text> */}
+
           <Legend
             verticalAlign="top"
             align="center"

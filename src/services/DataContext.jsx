@@ -5,6 +5,7 @@ import {
   getAverageSessions,
   getUserPerformanceData,
 } from './fetchUserData'
+import { useParams } from 'react-router-dom'
 
 const DataContext = createContext()
 
@@ -15,18 +16,12 @@ export function useDataContext() {
 
 export { DataContext }
 
-function DataContextProvider(props) {
-  const userId = 12
-  // const { userId } = useParams()
-  // userId = 12
-  // getUserMainData(12).then((userData) => {
-  //   console.log(userData)
-  // })
-
+function DataContextProvider({ children }) {
+  const { userId } = useParams()
   const [userData, setUserData] = useState({})
   const [activityData, setActivityData] = useState([])
   const [averageSessionsData, setAverageSessionsData] = useState([])
-  const [performanceData, setPerformanceData] = useState([])
+  const [performance, setPerformance] = useState([])
 
   useEffect(() => {
     getUserMainData(userId)
@@ -51,23 +46,28 @@ function DataContextProvider(props) {
         console.log('Données reçues:', user, activity, avgSessions, performance)
         setUserData(user)
         setActivityData(activity)
+        console.log('avgSessions reçue:', avgSessions)
+
         setAverageSessionsData(avgSessions)
-        setPerformanceData(performance)
+        console.log('performance reçue:', performance)
+        setPerformance(performance)
       })
       .catch((error) => {
         console.log('Error !', error)
       })
   }, [userId])
+  console.log('dans context', performance)
+
   return (
     <DataContext.Provider
       value={{
         userData,
         activityData,
         averageSessionsData,
-        performanceData,
+        performance,
       }}
     >
-      {props.children}
+      {children}
     </DataContext.Provider>
   )
 }

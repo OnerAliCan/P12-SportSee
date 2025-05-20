@@ -1,6 +1,4 @@
 import '../styles/stats.scss'
-import { getUserPerformanceData } from '../services/fetchUserData'
-import { useEffect, useState } from 'react'
 
 import {
   RadarChart,
@@ -8,10 +6,13 @@ import {
   PolarAngleAxis,
   Radar,
   ResponsiveContainer,
-  Polygon,
 } from 'recharts'
 
 export default function Stats({ performanceData }) {
+  if (!performanceData || performanceData.length === 0) {
+    return <div>Chargement des performances...</div>
+  }
+
   const kindTranslate = {
     1: 'Cardio',
     2: 'Energie',
