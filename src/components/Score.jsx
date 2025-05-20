@@ -1,11 +1,6 @@
 import '../styles/score.scss'
 
-import {
-  RadialBarChart,
-  RadialBar,
-  Legend,
-  ResponsiveContainer,
-} from 'recharts'
+import { RadialBarChart, RadialBar, ResponsiveContainer } from 'recharts'
 
 export default function Score({ score }) {
   if (!score) {

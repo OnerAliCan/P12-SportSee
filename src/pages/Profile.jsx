@@ -11,9 +11,10 @@ import NutritionalValue from '../components/NutritionalValue'
 import '../styles/main.scss'
 
 export default function Dashboard() {
-  const { userData, activityData, averageSessionsData, performanceData } =
+  const { userData, activityData, averageSessionsData, performance } =
     useDataContext()
-
+  console.log('dans profile', performance.data)
+  const performanceData = performance.data
   return (
     <div className="app">
       <HorizontalNavbar />
