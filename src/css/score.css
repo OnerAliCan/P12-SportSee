@@ -3,5 +3,8 @@
   height: 263px;
   background-color: #fbfbfb;
 }
+.score .recharts-radial-bar-background {
+  fill: #f0f0f0;
+}
 
 /*# sourceMappingURL=score.css.map */

@@ -10,30 +10,19 @@ import {
   Legend,
 } from 'recharts'
 import { useEffect, useState } from 'react'
-import { getUserActivity } from '../services/fetchUserData'
 
-export default function DailyActivity({ userId }) {
-  const [data, setData] = useState([])
+export default function DailyActivity({ activityData }) {
+  const dailyActivity = [...activityData]
 
-  const kilos = data.map((d) => d.kilogram)
+  const kilos = dailyActivity.map((d) => d.kilogram)
   const minKilo = Math.min(...kilos) - 1
   const maxKilo = Math.max(...kilos) + 1
-
-  useEffect(() => {
-    getUserActivity(userId).then((sessions) => {
-      const formatted = sessions.map((session, index) => ({
-        ...session,
-        day: index + 1,
-      }))
-      setData(formatted)
-    })
-  }, [userId])
 
   return (
     <div className="daily-activity">
       <ResponsiveContainer width="100%" height={300}>
         <BarChart
-          data={data}
+          data={activityData}
           margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
           barGap={8}
         >

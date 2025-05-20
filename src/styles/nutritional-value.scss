@@ -4,7 +4,33 @@
   flex-direction: column;
   gap: 39px;
   .nutritional-value {
+    display: flex;
+    flex-direction: row;
     flex: 1;
-    background-color: aqua;
+    background-color: #fbfbfb;
+    align-items: center;
+    justify-content: space-around;
+    .img-background {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 60px;
+      height: 60px;
+      background-color: #fbeaea;
+      border-radius: 6px;
+    }
+    .value-container {
+      display: flex;
+      flex-direction: column;
+      .value {
+        font-size: 20px;
+        font-weight: 700;
+      }
+      .label {
+        font-size: 14px;
+        font-weight: 500;
+        color: #74798c;
+      }
+    }
   }
 }

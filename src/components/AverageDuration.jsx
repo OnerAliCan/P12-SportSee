@@ -1,66 +1,77 @@
 import '../styles/average-duration.scss'
-import CustomActiveDot from './CustomActiveDot'
-
+import CustomCursor from './CustomCursor/'
+import CustomTooltip from './CustomTooltip/'
+import { useEffect, useState } from 'react'
+import { getAverageSessions } from '../services/fetchUserData'
 import {
   LineChart,
   Line,
   XAxis,
   YAxis,
-  CartesianGrid,
   Tooltip,
-  Legend,
   ResponsiveContainer,
 } from 'recharts'
-import { useEffect, useState } from 'react'
-import { getAverageSessions } from '../services/fetchUserData'
+
 const week = ['L', 'M', 'M', 'J', 'V', 'S', 'D']
 
-export default function AverageDuration({ userId }) {
-  const [data, setData] = useState([])
+export default function AverageDuration({ averageSessionsData }) {
+  const formattedDays = averageSessionsData.map((item) => ({
+    ...item,
+    day: week[item.day - 1],
+  }))
 
-  useEffect(() => {
-    getAverageSessions(userId).then((sessions) => {
-      const formatted = sessions.map((session) => ({
-        ...session,
-        day: week[session.day - 1],
-      }))
-
-      setData(formatted)
-    })
-  }, [userId])
-
-  const maxSessionLength = Math.max(...data.map((d) => d.sessionLength))
   return (
     <div className="average-duration">
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
-          data={data}
-          margin={{ top: 0, right: 0, left: 0, bottom: 0 }}
+          data={formattedDays}
+          margin={{ top: 0, right: 25, left: 25, bottom: 30 }}
         >
           <defs>
-            <linearGradient id="colorLine" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="10%" stopColor="rgba(255, 255, 255, 0.5)" />
-              <stop offset="100%" stopColor="#fff" />
+            <linearGradient id="lineGradient">
+              <stop offset="0%" stopColor="#FFFFFF" stopOpacity="30%" />
+              <stop offset="100%" stopColor="#FFFFFF" stopOpacity="100%" />
             </linearGradient>
           </defs>
-          <YAxis type="number" domain={[0, maxSessionLength]} hide="true" />
+          <text
+            x={35}
+            y={30}
+            textAnchor="left"
+            style={{
+              fontSize: '1rem',
+              fontWeight: 500,
+              fill: '#FFFFFF',
+              fillOpacity: '60%',
+            }}
+          >
+            Durée moyenne des sessions
+          </text>
           <XAxis
             dataKey="day"
             axisLine={false}
             tickLine={false}
-            tick={{ fill: '#fff', fontSize: 12, opacity: 0.6 }}
-            interval="preserveStartEnd"
+            tick={{ fill: '#FFFFFF', fillOpacity: '50%' }}
+            stroke="#FFFFFF"
+            tickMargin={10}
           />
-          <Tooltip cursor={true} />
-          <Line
-            type="monotone"
+          <YAxis
             dataKey="sessionLength"
-            stroke="url(#colorLine)"
-            strokeWidth={2}
-            dot={false}
-            activeDot={<CustomActiveDot />}
-            isAnimationActive={false}
+            hide={true}
+            domain={['dataMin -20', 'dataMax + 50']}
           />
+          <Line
+            dataKey="sessionLength"
+            type="natural"
+            stroke="url(#lineGradient)"
+            strokeWidth={2.5}
+            dot={false}
+            activeDot={{
+              stroke: '#FFFFFF',
+              strokeOpacity: '50%',
+              strokeWidth: 10,
+            }}
+          />
+          <Tooltip content={<CustomTooltip />} cursor={<CustomCursor />} />
         </LineChart>
       </ResponsiveContainer>
     </div>

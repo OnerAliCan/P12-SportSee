@@ -1,7 +1,9 @@
 .average-duration {
   flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: linear-gradient(to bottom, #ff0000, #fe4343);
   border-radius: 5px;
-  padding: 20px;
   box-sizing: border-box;
 }
