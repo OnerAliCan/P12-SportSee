@@ -8,12 +8,14 @@ export default function HorizontalNavbar() {
       <div className="logo">
         <img src={logo} alt="" />
       </div>
-      <nav className="horizontal-navbar">
-        <a href="/">Accueil</a>
-        <a href="/">Profil</a>
-        <a href="/">Réglage</a>
-        <a href="/">Communauté</a>
-      </nav>
+      <div className="navbar-container">
+        <nav className="horizontal-navbar">
+          <a href="/">Accueil</a>
+          <a href="/">Profil</a>
+          <a href="/">Réglage</a>
+          <a href="/">Communauté</a>
+        </nav>
+      </div>
     </div>
   )
 }

@@ -8,6 +8,7 @@ import {
   PolarAngleAxis,
   Radar,
   ResponsiveContainer,
+  Polygon,
 } from 'recharts'
 
 export default function Stats({ performanceData }) {
@@ -30,8 +31,13 @@ export default function Stats({ performanceData }) {
   return (
     <div className="stats">
       <ResponsiveContainer width={'100%'} height={'100%'}>
-        <RadarChart width={730} height={250} data={formattedData}>
-          <PolarAngleAxis dataKey="kind" tickLine={false} stroke="#FFFFFF" />
+        <RadarChart data={formattedData} outerRadius="65%">
+          <PolarAngleAxis
+            dataKey="kind"
+            tickLine={false}
+            stroke="#FFFFFF"
+            tick={{ fontSize: '0.6rem', fontWeight: '500' }}
+          />
           <PolarGrid stroke="#FFFFFF" radialLines={false} />
           <Radar dataKey="value" fill="#FF0101" fillOpacity="70%" />
         </RadarChart>

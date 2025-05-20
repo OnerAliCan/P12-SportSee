@@ -40,7 +40,10 @@ export default function NutritionalValue({ data }) {
             <img src={icons[label]} alt={label} />
           </div>
           <div className="value-container">
-            <div className="value"> {value}kCal</div>
+            <div className="value">
+              {value}
+              {label === 'Calories' ? 'kCal' : 'g'}
+            </div>
             <div className="label"> {label}</div>
           </div>
         </div>

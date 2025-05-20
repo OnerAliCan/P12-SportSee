@@ -1,8 +1,6 @@
 import '../styles/average-duration.scss'
 import CustomCursor from './CustomCursor/'
 import CustomTooltip from './CustomTooltip/'
-import { useEffect, useState } from 'react'
-import { getAverageSessions } from '../services/fetchUserData'
 import {
   LineChart,
   Line,
@@ -10,6 +8,7 @@ import {
   YAxis,
   Tooltip,
   ResponsiveContainer,
+  Legend,
 } from 'recharts'
 
 const week = ['L', 'M', 'M', 'J', 'V', 'S', 'D']
@@ -33,7 +32,7 @@ export default function AverageDuration({ averageSessionsData }) {
               <stop offset="100%" stopColor="#FFFFFF" stopOpacity="100%" />
             </linearGradient>
           </defs>
-          <text
+          {/* <text
             x={35}
             y={30}
             textAnchor="left"
@@ -45,7 +44,14 @@ export default function AverageDuration({ averageSessionsData }) {
             }}
           >
             Durée moyenne des sessions
-          </text>
+          </text> */}
+          <Legend
+            verticalAlign="top"
+            align="center"
+            content={() => (
+              <p className="chart-title">Durée moyenne des sessions</p>
+            )}
+          />
           <XAxis
             dataKey="day"
             axisLine={false}

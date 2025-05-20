@@ -26,8 +26,6 @@ export default function Score({ score }) {
     },
   ]
 
-  console.log(score * 100)
-
   return (
     <div className="score">
       <ResponsiveContainer width="100%" height="100%">

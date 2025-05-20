@@ -1,28 +1,30 @@
 .horizontal-navbar-container {
   display: flex;
-  display: flex;
   flex-direction: row;
   width: 100%;
   height: 91px;
   background-color: #020203;
   align-items: center;
+  justify-content: space-between;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  padding: 10px;
 }
 .horizontal-navbar-container .logo {
   width: 178px;
   height: 61px;
   margin-left: 28px;
-  margin-right: 149px;
 }
-.horizontal-navbar-container .horizontal-navbar {
+.horizontal-navbar-container .navbar-container {
+  width: 75%;
+}
+.horizontal-navbar-container .navbar-container .horizontal-navbar {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  gap: 219px;
 }
-.horizontal-navbar-container .horizontal-navbar a {
+.horizontal-navbar-container .navbar-container .horizontal-navbar a {
   font-weight: 500;
-  font-size: 24px;
+  font-size: 20px;
   color: #fff;
   text-decoration: none;
 }

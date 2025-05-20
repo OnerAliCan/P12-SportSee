@@ -1,42 +1,68 @@
-html,
-body {
-  margin: 0;
-  font-family: 'Roboto', sans-serif;
-  height: 100%;
-  padding: 0;
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
+html,
+body {
+  display: flex;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-y: auto;
+  box-sizing: border-box;
+  // overflow: hidden;
+  min-height: 100vh;
+  height: auto;
+  overflow-y: auto;
+  flex: 1;
+}
+
+// html {
+//   border: 1vpx solid red;
+// }
+
+// * {
+// height: 100% !important;
+// border: 1px solid red;
+// }
+
 #root {
   height: 100%;
+  width: 100%;
 }
 
 .app {
   height: 100%;
   display: flex;
   flex-direction: column;
+
   .horizontal-navbar-user-infos-container {
     display: flex;
     flex-direction: row;
-    height: 100%;
+    min-height: 100%;
+
     .user-infos {
       margin-left: 107px;
       margin-top: 68px;
       margin-right: 90px;
       width: 100%;
+
       .user-stats {
         display: flex;
         flex-direction: row;
-        gap: 30px;
+        gap: clamp(5px, 1vw, 30px);
         width: 100%;
         .curves {
           display: flex;
-          gap: 30px;
+          gap: clamp(5px, 1vw, 30px);
           flex-direction: column;
           flex: 3;
           .small-curves {
             display: flex;
-            gap: 30px;
+            gap: clamp(5px, 1vw, 30px);
             flex-direction: row;
           }
         }

@@ -14,31 +14,62 @@ import { useEffect, useState } from 'react'
 export default function DailyActivity({ activityData }) {
   const dailyActivity = [...activityData]
 
+  const activityDayNumbers = activityData.map((item, index) => ({
+    ...item,
+    day: index + 1,
+  }))
+
   const kilos = dailyActivity.map((d) => d.kilogram)
-  const minKilo = Math.min(...kilos) - 1
+  const minKilo = Math.min(...kilos) - 5
   const maxKilo = Math.max(...kilos) + 1
 
   return (
     <div className="daily-activity">
       <ResponsiveContainer width="100%" height={300}>
         <BarChart
-          data={activityData}
+          data={activityDayNumbers}
           margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
           barGap={8}
         >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="day" />
+          <text
+            x={30}
+            y={25}
+            textAnchor="left"
+            style={{
+              fontSize: '0.9rem',
+              fontWeight: 500,
+              fill: '#000000',
+            }}
+          >
+            Activité quotidienne
+          </text>
+          <CartesianGrid strokeDasharray="3 3" vertical={false} />
+          <XAxis
+            dataKey="day"
+            tickLine={false}
+            axisLine={{ stroke: '#DEDEDE' }}
+            tick={{ stroke: '#9B9EAC', fontWeight: '400' }}
+          />
           <YAxis
             yAxisId="left"
-            domain={[minKilo, maxKilo]}
+            domain={[minKilo, 'auto']}
             orientation="right"
             dataKey="kilogram"
           />
           <YAxis yAxisId="right" orientation="left" dataKey="calories" hide />
           <Tooltip />
-          <Legend verticalAlign="top" align="right" />
+          <Legend
+            layout="horizontal"
+            verticalAlign="top"
+            align="right"
+            iconType="circle"
+            wrapperStyle={{
+              paddingBottom: '1em',
+            }}
+          />
           <Bar
             yAxisId="left"
+            name="Poids (kg)"
             dataKey="kilogram"
             fill="#282D30"
             barSize={7}
@@ -46,6 +77,7 @@ export default function DailyActivity({ activityData }) {
           />
           <Bar
             yAxisId="right"
+            name="Calories brûlées (kCal)"
             dataKey="calories"
             fill="#E60000"
             barSize={7}

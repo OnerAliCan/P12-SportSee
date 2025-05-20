@@ -13,7 +13,6 @@ import '../styles/main.scss'
 export default function Dashboard() {
   const { userData, activityData, averageSessionsData, performanceData } =
     useDataContext()
-  console.log('dans profile', userData.keyData)
 
   return (
     <div className="app">
