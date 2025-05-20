@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 export default function CustomCursor({ points }) {
   return (
     <rect
@@ -11,37 +10,3 @@ export default function CustomCursor({ points }) {
     />
   )
 }
-=======
-import React from 'react'
-import {
-  ComposedChart,
-  Line,
-  Area,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  Scatter,
-  Rectangle,
-} from 'recharts'
-
-const CustomCursor = (props) => {
-  const { points, width, height } = props
-  const { x, y } = points[0]
-  //   console.log(props)
-  return (
-    <Rectangle
-      fill="red"
-      stroke="red"
-      x={x}
-      y={y}
-      width={width * 2}
-      height={height}
-    />
-  )
-}
-
-export default CustomCursor
->>>>>>> 1358f8b (before test)
