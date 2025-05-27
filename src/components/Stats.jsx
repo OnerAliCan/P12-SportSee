@@ -32,7 +32,7 @@ export default function Stats({ performanceData }) {
   return (
     <div className="stats">
       <ResponsiveContainer width={'100%'} height={'100%'}>
-        <RadarChart data={formattedData} outerRadius="65%">
+        <RadarChart data={formattedData} outerRadius="60%">
           <PolarAngleAxis
             dataKey="kind"
             tickLine={false}

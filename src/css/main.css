@@ -35,9 +35,9 @@ body {
   min-height: 100%;
 }
 .app .horizontal-navbar-user-infos-container .user-infos {
-  margin-left: 107px;
+  margin-left: clamp(12px, 5vw, 107px);
   margin-top: 68px;
-  margin-right: 90px;
+  margin-right: clamp(12px, 5vw, 107px);
   width: 100%;
 }
 .app .horizontal-navbar-user-infos-container .user-infos .user-stats {
