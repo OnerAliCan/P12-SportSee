@@ -7,7 +7,7 @@ import DailyActivity from '../components/DailyActivity'
 import AverageDuration from '../components/AverageDuration'
 import Stats from '../components/Stats'
 import Score from '../components/Score'
-import NutritionalValue from '../components/NutritionalValue'
+import NutritionalValues from '../components/NutritionalValues'
 import '../styles/main.scss'
 
 export default function Dashboard() {
@@ -32,7 +32,7 @@ export default function Dashboard() {
               </div>
             </div>
             <div className="nutritional-values-container">
-              <NutritionalValue data={userData.keyData} />
+              <NutritionalValues data={userData.keyData} />
             </div>
           </div>
         </div>

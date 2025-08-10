@@ -19,12 +19,17 @@ export default function AverageDuration({ averageSessionsData }) {
     day: week[item.day - 1],
   }))
 
+  const firstPoint = { ...formattedDays[0], day: '' }
+  const lastPoint = { ...formattedDays[formattedDays.length - 1], day: '' }
+
+  const formattedDaysWithEdges = [firstPoint, ...formattedDays, lastPoint]
+
   return (
     <div className="average-duration">
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
-          data={formattedDays}
-          margin={{ top: 0, right: 25, left: 25, bottom: 30 }}
+          data={formattedDaysWithEdges}
+          margin={{ top: 0, right: 0, left: 0, bottom: 30 }}
         >
           <defs>
             <linearGradient id="lineGradient">
@@ -47,6 +52,8 @@ export default function AverageDuration({ averageSessionsData }) {
             tick={{ fill: '#FFFFFF', fillOpacity: '50%' }}
             stroke="#FFFFFF"
             tickMargin={10}
+            interval={0}
+            padding={{ left: 0, right: 0 }}
           />
           <YAxis
             dataKey="sessionLength"
