@@ -9,11 +9,22 @@ import Stats from '../components/Stats'
 import Score from '../components/Score'
 import NutritionalValues from '../components/NutritionalValues'
 import '../styles/main.scss'
+import { Navigate } from 'react-router-dom'
 
-export default function Dashboard() {
-  const { userData, activityData, averageSessionsData, performance } =
-    useDataContext()
-  const performanceData = performance.data
+export default function Profile() {
+  const {
+    userData,
+    activityData,
+    averageSessionsData,
+    performance,
+    userNotFound,
+  } = useDataContext()
+  const performanceData = performance?.data || []
+
+  if (userNotFound) {
+    return <Navigate to="/404" replace />
+  }
+
   return (
     <div className="app">
       <HorizontalNavbar />

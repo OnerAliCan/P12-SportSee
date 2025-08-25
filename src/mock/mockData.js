@@ -1,8 +1,8 @@
 const USER_MAIN_DATA = [
   {
-    id: 12,
+    id: 22,
     userInfos: {
-      firstName: 'Karl',
+      firstName: 'Karl Mock',
       lastName: 'Dovineau',
       age: 31,
     },
@@ -15,9 +15,9 @@ const USER_MAIN_DATA = [
     },
   },
   {
-    id: 18,
+    id: 28,
     userInfos: {
-      firstName: 'Cecilia',
+      firstName: 'Cecilia Mock',
       lastName: 'Ratorez',
       age: 34,
     },
@@ -33,7 +33,7 @@ const USER_MAIN_DATA = [
 
 const USER_ACTIVITY = [
   {
-    userId: 12,
+    userId: 22,
     sessions: [
       {
         day: '2020-07-01',
@@ -73,7 +73,7 @@ const USER_ACTIVITY = [
     ],
   },
   {
-    userId: 18,
+    userId: 28,
     sessions: [
       {
         day: '2020-07-01',
@@ -116,7 +116,7 @@ const USER_ACTIVITY = [
 
 const USER_AVERAGE_SESSIONS = [
   {
-    userId: 12,
+    userId: 22,
     sessions: [
       {
         day: 1,
@@ -149,7 +149,7 @@ const USER_AVERAGE_SESSIONS = [
     ],
   },
   {
-    userId: 18,
+    userId: 28,
     sessions: [
       {
         day: 1,
@@ -185,7 +185,7 @@ const USER_AVERAGE_SESSIONS = [
 
 const USER_PERFORMANCE = [
   {
-    userId: 12,
+    userId: 22,
     kind: {
       1: 'cardio',
       2: 'energy',
@@ -222,7 +222,7 @@ const USER_PERFORMANCE = [
     ],
   },
   {
-    userId: 18,
+    userId: 28,
     kind: {
       1: 'cardio',
       2: 'energy',
