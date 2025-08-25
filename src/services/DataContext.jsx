@@ -41,11 +41,6 @@ function DataContextProvider({ children }) {
       )?.sessions
       const perf = USER_PERFORMANCE.find((p) => p.userId === numericId)
 
-      if (!user) {
-        navigate('/404', { replace: true })
-        return
-      }
-
       setUserData(user)
       setActivityData(activity || [])
       setAverageSessionsData(avgSessions || [])
