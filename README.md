@@ -38,7 +38,9 @@ http://localhost:5173
 
 ## Navigation
 
-Pour revenir à la sélection des utilisateurs, cliquez sur le logo SportSee![](/src/assets/logo.svg 'This is a sample image.').
+Pour revenir à la sélection des utilisateurs, cliquez sur le logo SportSee :
+
+![](/src/assets/logo.svg 'This is a sample image.')
 
 ## Structure du projet
 
