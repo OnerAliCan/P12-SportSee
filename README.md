@@ -1,11 +1,12 @@
 # Démarrage du projet
 
+Version testée de Node.js : v22.15.0
+
 ## Frontend
 
 - Depuis la racine du projet, lancez les commandes suivantes :
 
 ```
-
 npm install
 npm run dev
 ```
