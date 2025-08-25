@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from 'react'
+import { createContext, useState, useEffect } from 'react'
 import {
   getUserMainData,
   getUserActivity,
@@ -9,33 +9,19 @@ import { useParams } from 'react-router-dom'
 
 const DataContext = createContext()
 
-// eslint-disable-next-line react-refresh/only-export-components
-export function useDataContext() {
-  return useContext(DataContext)
-}
-
 export { DataContext }
 
 function DataContextProvider({ children }) {
   const { userId } = useParams()
+
+  // States qui contiennent les différentes données de l’utilisateur
   const [userData, setUserData] = useState({})
   const [activityData, setActivityData] = useState([])
   const [averageSessionsData, setAverageSessionsData] = useState([])
   const [performance, setPerformance] = useState([])
 
+  // fetch toutes les données utilisateur
   useEffect(() => {
-    getUserMainData(userId)
-      .then((user) => {
-        console.log('User data reçue:', user)
-        setUserData(user)
-      })
-      .catch((error) => {
-        console.error('Erreur lors du fetch de userData:', error)
-      })
-  }, [userId])
-
-  useEffect(() => {
-    console.log('useEffect lancé')
     Promise.all([
       getUserMainData(userId),
       getUserActivity(userId),
@@ -43,20 +29,16 @@ function DataContextProvider({ children }) {
       getUserPerformanceData(userId),
     ])
       .then(([user, activity, avgSessions, performance]) => {
-        console.log('Données reçues:', user, activity, avgSessions, performance)
+        // Mise à jour des states avec les résultats
         setUserData(user)
         setActivityData(activity)
-        console.log('avgSessions reçue:', avgSessions)
-
         setAverageSessionsData(avgSessions)
-        console.log('performance reçue:', performance)
         setPerformance(performance)
       })
       .catch((error) => {
-        console.log('Error !', error)
+        console.error('Erreur lors du fetch des données utilisateur:', error)
       })
   }, [userId])
-  console.log('dans context', performance)
 
   return (
     <DataContext.Provider
@@ -71,4 +53,5 @@ function DataContextProvider({ children }) {
     </DataContext.Provider>
   )
 }
+
 export default DataContextProvider

@@ -14,14 +14,17 @@ import {
 const week = ['L', 'M', 'M', 'J', 'V', 'S', 'D']
 
 export default function AverageDuration({ averageSessionsData }) {
+  // Formatage des jours numériques en lettres
   const formattedDays = averageSessionsData.map((item) => ({
     ...item,
     day: week[item.day - 1],
   }))
 
+  // Création de points fictifs au début et à la fin pour "étirer" le graphique
   const firstPoint = { ...formattedDays[0], day: '' }
   const lastPoint = { ...formattedDays[formattedDays.length - 1], day: '' }
 
+  // Tableau final avec les points fictifs ajoutés
   const formattedDaysWithEdges = [firstPoint, ...formattedDays, lastPoint]
 
   return (
@@ -31,6 +34,7 @@ export default function AverageDuration({ averageSessionsData }) {
           data={formattedDaysWithEdges}
           margin={{ top: 0, right: 0, left: 0, bottom: 30 }}
         >
+          {/* Définition d’un dégradé pour la ligne */}
           <defs>
             <linearGradient id="lineGradient">
               <stop offset="0%" stopColor="#FFFFFF" stopOpacity="30%" />

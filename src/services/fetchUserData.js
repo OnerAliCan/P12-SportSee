@@ -1,5 +1,6 @@
 import { apiUrl } from './apiUrl'
 
+// Récupérer les infos principales de l’utilisateur
 export function getUserMainData(userId) {
   return fetch(`${apiUrl}/user/${userId}`)
     .then((response) => {
@@ -11,6 +12,7 @@ export function getUserMainData(userId) {
     .then((data) => data.data)
 }
 
+// Récupère les activités de l’utilisateur pour le nombre de sessions de sport par jour
 export function getUserActivity(userId) {
   return fetch(`${apiUrl}/user/${userId}/activity`)
     .then((response) => {
@@ -22,6 +24,7 @@ export function getUserActivity(userId) {
     .then((data) => data.data.sessions)
 }
 
+// Récupère les sessions moyennes de l’utilisateur pour la durée moyenne d’entraînement par jour
 export function getAverageSessions(userId) {
   return fetch(`${apiUrl}/user/${userId}/average-sessions`)
     .then((response) => {
@@ -33,6 +36,7 @@ export function getAverageSessions(userId) {
     .then((data) => data.data.sessions)
 }
 
+// Récupère les performances de l’utilisateur (force, cardio, endurance, etc.)
 export function getUserPerformanceData(userId) {
   return fetch(`${apiUrl}/user/${userId}/performance`)
     .then((response) => {
@@ -42,7 +46,6 @@ export function getUserPerformanceData(userId) {
       return response.json()
     })
     .then((data) => {
-      console.log('dansfetch', data.data)
       return data.data
     })
 }

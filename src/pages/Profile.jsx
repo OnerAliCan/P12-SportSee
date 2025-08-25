@@ -1,5 +1,5 @@
 import React from 'react'
-import { useDataContext } from '../services/DataContext'
+import { useDataContext } from '../hooks/useDataContext'
 import UserName from '../components/UserName'
 import HorizontalNavbar from '../components/HorizontalNavbar'
 import VerticalNavbar from '../components/VerticalNavbar'
@@ -13,7 +13,6 @@ import '../styles/main.scss'
 export default function Dashboard() {
   const { userData, activityData, averageSessionsData, performance } =
     useDataContext()
-  console.log('dans profile', performance.data)
   const performanceData = performance.data
   return (
     <div className="app">
